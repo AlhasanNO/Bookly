@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:bookly_app/core/assets.dart';
+import 'package:bookly_app/core/utils/assets.dart';
 
 class FeaturedListViewItem extends StatelessWidget {
   const FeaturedListViewItem({super.key});
