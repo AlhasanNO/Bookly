@@ -13,7 +13,7 @@ class FeaturedListViewItem extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(15.0),
-          // image: const DecorationImage(image: AssetImage(Assets.testImage)),
+          image: const DecorationImage(image: AssetImage(Assets.testImage)),
         ),
       ),
     );
