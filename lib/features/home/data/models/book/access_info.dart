@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'epub.dart';
 import 'pdf.dart';
 
@@ -28,7 +26,7 @@ class AccessInfo {
     this.quoteSharingAllowed,
   });
 
-  factory AccessInfo.from(Map<String, dynamic> data) {
+  factory AccessInfo.fromJson(Map<String, dynamic> data) {
     return AccessInfo(
       country: data['country'] as String?,
       viewability: data['viewability'] as String?,
@@ -37,40 +35,28 @@ class AccessInfo {
       textToSpeechPermission: data['textToSpeechPermission'] as String?,
       epub: data['epub'] == null
           ? null
-          : Epub.from(data['epub'] as Map<String, dynamic>),
+          : Epub.fromJson(data['epub'] as Map<String, dynamic>),
       pdf: data['pdf'] == null
           ? null
-          : Pdf.from(data['pdf'] as Map<String, dynamic>),
+          : Pdf.fromJson(data['pdf'] as Map<String, dynamic>),
       webReaderLink: data['webReaderLink'] as String?,
       accessViewStatus: data['accessViewStatus'] as String?,
       quoteSharingAllowed: data['quoteSharingAllowed'] as bool?,
     );
   }
 
-  Map<String, dynamic> to() {
+  Map<String, dynamic> toJson() {
     return {
       'country': country,
       'viewability': viewability,
       'embeddable': embeddable,
       'publicDomain': publicDomain,
       'textToSpeechPermission': textToSpeechPermission,
-      'epub': epub?.to(),
-      'pdf': pdf?.to(),
+      'epub': epub?.toJson(),
+      'pdf': pdf?.toJson(),
       'webReaderLink': webReaderLink,
       'accessViewStatus': accessViewStatus,
       'quoteSharingAllowed': quoteSharingAllowed,
     };
   }
-
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [AccessInfo].
-  factory AccessInfo.fromJson(String data) {
-    return AccessInfo.from(json.decode(data) as Map<String, dynamic>);
-  }
-
-  /// `dart:convert`
-  ///
-  /// Converts [AccessInfo] to a JSON string.
-  String toJson() => json.encode(to());
 }

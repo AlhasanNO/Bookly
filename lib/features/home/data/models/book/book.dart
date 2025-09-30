@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'access_info.dart';
 import 'sale_info.dart';
 import 'search_info.dart';
@@ -26,7 +24,7 @@ class Book {
     this.searchInfo,
   });
 
-  factory Book.from(Map<String, dynamic> data) {
+  factory Book.fromJson(Map<String, dynamic> data) {
     return Book(
       kind: data['kind'] as String?,
       id: data['id'] as String?,
@@ -34,41 +32,29 @@ class Book {
       selfLink: data['selfLink'] as String?,
       volumeInfo: data['volumeInfo'] == null
           ? null
-          : VolumeInfo.from(data['volumeInfo'] as Map<String, dynamic>),
+          : VolumeInfo.fromJson(data['volumeInfo'] as Map<String, dynamic>),
       saleInfo: data['saleInfo'] == null
           ? null
-          : SaleInfo.from(data['saleInfo'] as Map<String, dynamic>),
+          : SaleInfo.fromJson(data['saleInfo'] as Map<String, dynamic>),
       accessInfo: data['accessInfo'] == null
           ? null
-          : AccessInfo.from(data['accessInfo'] as Map<String, dynamic>),
+          : AccessInfo.fromJson(data['accessInfo'] as Map<String, dynamic>),
       searchInfo: data['searchInfo'] == null
           ? null
-          : SearchInfo.from(data['searchInfo'] as Map<String, dynamic>),
+          : SearchInfo.fromJson(data['searchInfo'] as Map<String, dynamic>),
     );
   }
 
-  Map<String, dynamic> to() {
+  Map<String, dynamic> toJson() {
     return {
       'kind': kind,
       'id': id,
       'etag': etag,
       'selfLink': selfLink,
-      'volumeInfo': volumeInfo?.to(),
-      'saleInfo': saleInfo?.to(),
-      'accessInfo': accessInfo?.to(),
-      'searchInfo': searchInfo?.to(),
+      'volumeInfo': volumeInfo?.toJson(),
+      'saleInfo': saleInfo?.toJson(),
+      'accessInfo': accessInfo?.toJson(),
+      'searchInfo': searchInfo?.toJson(),
     };
   }
-
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [Book].
-  factory Book.fromJson(String data) {
-    return Book.from(json.decode(data) as Map<String, dynamic>);
-  }
-
-  /// `dart:convert`
-  ///
-  /// Converts [Book] to a JSON string.
-  String toJson() => json.encode(to());
 }

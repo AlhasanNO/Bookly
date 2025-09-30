@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class SaleInfo {
   String? country;
   String? saleability;
@@ -7,7 +5,7 @@ class SaleInfo {
 
   SaleInfo({this.country, this.saleability, this.isEbook});
 
-  factory SaleInfo.from(Map<String, dynamic> data) {
+  factory SaleInfo.fromJson(Map<String, dynamic> data) {
     return SaleInfo(
       country: data['country'] as String?,
       saleability: data['saleability'] as String?,
@@ -15,19 +13,7 @@ class SaleInfo {
     );
   }
 
-  Map<String, dynamic> to() {
+  Map<String, dynamic> toJson() {
     return {'country': country, 'saleability': saleability, 'isEbook': isEbook};
   }
-
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [SaleInfo].
-  factory SaleInfo.fromJson(String data) {
-    return SaleInfo.from(json.decode(data) as Map<String, dynamic>);
-  }
-
-  /// `dart:convert`
-  ///
-  /// Converts [SaleInfo] to a JSON string.
-  String toJson() => json.encode(to());
 }

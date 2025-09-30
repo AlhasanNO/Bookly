@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'image_links.dart';
 import 'industry_identifier.dart';
 import 'panelization_summary.dart';
@@ -48,7 +46,7 @@ class VolumeInfo {
     this.canonicalVolumeLink,
   });
 
-  factory VolumeInfo.from(Map<String, dynamic> data) {
+  factory VolumeInfo.fromJson(Map<String, dynamic> data) {
     return VolumeInfo(
       title: data['title'] as String?,
       authors: data['authors'] as List<String>?,
@@ -56,11 +54,11 @@ class VolumeInfo {
       publishedDate: data['publishedDate'] as String?,
       description: data['description'] as String?,
       industryIdentifiers: (data['industryIdentifiers'] as List<dynamic>?)
-          ?.map((e) => IndustryIdentifier.from(e as Map<String, dynamic>))
+          ?.map((e) => IndustryIdentifier.fromJson(e as Map<String, dynamic>))
           .toList(),
       readingModes: data['readingModes'] == null
           ? null
-          : ReadingModes.from(data['readingModes'] as Map<String, dynamic>),
+          : ReadingModes.fromJson(data['readingModes'] as Map<String, dynamic>),
       pageCount: data['pageCount'] as int?,
       printType: data['printType'] as String?,
       categories: data['categories'] as List<String>?,
@@ -69,12 +67,12 @@ class VolumeInfo {
       contentVersion: data['contentVersion'] as String?,
       panelizationSummary: data['panelizationSummary'] == null
           ? null
-          : PanelizationSummary.from(
+          : PanelizationSummary.fromJson(
               data['panelizationSummary'] as Map<String, dynamic>,
             ),
       imageLinks: data['imageLinks'] == null
           ? null
-          : ImageLinks.from(data['imageLinks'] as Map<String, dynamic>),
+          : ImageLinks.fromJson(data['imageLinks'] as Map<String, dynamic>),
       language: data['language'] as String?,
       previewLink: data['previewLink'] as String?,
       infoLink: data['infoLink'] as String?,
@@ -82,39 +80,29 @@ class VolumeInfo {
     );
   }
 
-  Map<String, dynamic> to() {
+  Map<String, dynamic> toJson() {
     return {
       'title': title,
       'authors': authors,
       'publisher': publisher,
       'publishedDate': publishedDate,
       'description': description,
-      'industryIdentifiers': industryIdentifiers?.map((e) => e.to()).toList(),
-      'readingModes': readingModes?.to(),
+      'industryIdentifiers': industryIdentifiers
+          ?.map((e) => e.toJson())
+          .toList(),
+      'readingModes': readingModes?.toJson(),
       'pageCount': pageCount,
       'printType': printType,
       'categories': categories,
       'maturityRating': maturityRating,
       'allowAnonLogging': allowAnonLogging,
       'contentVersion': contentVersion,
-      'panelizationSummary': panelizationSummary?.to(),
-      'imageLinks': imageLinks?.to(),
+      'panelizationSummary': panelizationSummary?.toJson(),
+      'imageLinks': imageLinks?.toJson(),
       'language': language,
       'previewLink': previewLink,
       'infoLink': infoLink,
       'canonicalVolumeLink': canonicalVolumeLink,
     };
   }
-
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [VolumeInfo].
-  factory VolumeInfo.fromJson(String data) {
-    return VolumeInfo.from(json.decode(data) as Map<String, dynamic>);
-  }
-
-  /// `dart:convert`
-  ///
-  /// Converts [VolumeInfo] to a JSON string.
-  String toJson() => json.encode(to());
 }
