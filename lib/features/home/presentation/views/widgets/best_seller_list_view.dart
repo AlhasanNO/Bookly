@@ -11,7 +11,7 @@ class BestSellerListView extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       padding: const EdgeInsets.symmetric(horizontal: 30.0),
       itemBuilder: (context, index) {
-        return const BestSellerListViewItem();
+        return const BookListViewItem();
       },
     );
   }
