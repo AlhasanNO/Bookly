@@ -4,7 +4,7 @@ import 'package:meta/meta.dart';
 import 'package:bookly_app/features/home/data/models/book/book.dart';
 import 'package:bookly_app/features/home/data/repos/home_repo.dart';
 
-part 'newest_books_state.dart';
+part 'newest_books_states.dart';
 
 class NewestBooksCubit extends Cubit<NewestBooksState> {
   NewestBooksCubit(this._homeRepo) : super(NewestBooksInitial());

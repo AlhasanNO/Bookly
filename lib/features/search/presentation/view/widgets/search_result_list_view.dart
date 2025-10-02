@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:bookly_app/features/home/presentation/views/widgets/best_seller_list_view_item.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/newest_list_view_item.dart';
 
 class SearchResultListView extends StatelessWidget {
   const SearchResultListView({super.key});
@@ -11,7 +11,7 @@ class SearchResultListView extends StatelessWidget {
       child: ListView.builder(
         padding: EdgeInsets.zero,
         itemBuilder: (context, index) {
-          return const BookListViewItem();
+          // return const BookListViewItem();
         },
       ),
     );
