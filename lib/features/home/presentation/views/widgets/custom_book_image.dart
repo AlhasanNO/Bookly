@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
@@ -19,13 +20,12 @@ class CustomBookImage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 10.0),
         child: AspectRatio(
           aspectRatio: 0.625,
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15.0),
-              image: DecorationImage(
-                image: NetworkImage(imageUrl),
-                fit: BoxFit.fill,
-              ),
+          child: ClipRRect(
+            borderRadius: BorderRadiusGeometry.circular(16.0),
+            child: CachedNetworkImage(
+              imageUrl: imageUrl,
+              errorWidget: (context, url, error) => const Icon(Icons.error),
+              fit: BoxFit.fill,
             ),
           ),
         ),
