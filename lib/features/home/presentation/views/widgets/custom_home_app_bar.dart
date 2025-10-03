@@ -26,7 +26,10 @@ class CustomHomeAppBar extends StatelessWidget {
             onPressed: () {
               GoRouter.of(context).push(AppRouter.searchView);
             },
-            icon: const Icon(FontAwesomeIcons.magnifyingGlass),
+            icon: const Icon(
+              FontAwesomeIcons.magnifyingGlass,
+              color: Colors.white,
+            ),
           ),
         ],
       ),

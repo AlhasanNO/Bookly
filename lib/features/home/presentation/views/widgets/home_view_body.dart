@@ -11,6 +11,7 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SafeArea(
+      bottom: false,
       child: CustomScrollView(
         physics: BouncingScrollPhysics(),
         slivers: [

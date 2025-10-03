@@ -29,9 +29,11 @@ class NewestListViewItem extends StatelessWidget {
               child: AspectRatio(
                 aspectRatio: 0.625,
                 child: ClipRRect(
-                  borderRadius: BorderRadiusGeometry.circular(7.5),
+                  borderRadius: BorderRadius.circular(7.5),
                   child: CachedNetworkImage(
                     imageUrl: book.volumeInfo!.imageLinks!.thumbnail!,
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
                     fit: BoxFit.fill,
                   ),
                 ),

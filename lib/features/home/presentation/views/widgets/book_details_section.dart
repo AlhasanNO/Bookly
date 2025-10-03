@@ -16,7 +16,7 @@ class BookDetailsSection extends StatelessWidget {
           padding: EdgeInsets.symmetric(
             horizontal: MediaQuery.of(context).size.width * 0.20,
           ),
-          child: const CustomBookImage(imageUrl: '',),
+          child: const CustomBookImage(imageUrl: ''),
         ),
         const SizedBox(height: 43.0),
         const Text('The Jungle Book', style: Styles.textStyle30),
@@ -29,7 +29,7 @@ class BookDetailsSection extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 16.0),
-        // const BookRating(),
+        const BookRating(count: 306, rating: 4.6),
         const SizedBox(height: 37.0),
         const BookActions(),
       ],
