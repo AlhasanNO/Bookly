@@ -21,7 +21,7 @@ class BookActions extends StatelessWidget {
                 topLeft: Radius.circular(16.0),
                 bottomLeft: Radius.circular(16.0),
               ),
-              text: '19.99\$',
+              text: 'Free',
             ),
           ),
           Expanded(
@@ -33,7 +33,7 @@ class BookActions extends StatelessWidget {
                 topRight: Radius.circular(16.0),
                 bottomRight: Radius.circular(16.0),
               ),
-              text: 'Free Preview',
+              text: 'Preview',
             ),
           ),
         ],
