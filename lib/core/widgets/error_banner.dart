@@ -1,5 +1,6 @@
-import 'package:bookly_app/core/utils/styles.dart';
 import 'package:flutter/material.dart';
+
+import 'package:bookly_app/core/utils/styles.dart';
 
 class ErrorBanner extends StatelessWidget {
   const ErrorBanner({super.key, required this.errorMessage});

@@ -1,7 +1,10 @@
-import 'package:bookly_app/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:bookly_app/features/search/presentation/cubits/book_search_cubit/search_books_cubit.dart';
+import 'package:bookly_app/core/utils/styles.dart';
 
 class CustomSearchTextField extends StatelessWidget {
   const CustomSearchTextField({super.key});
@@ -15,15 +18,18 @@ class CustomSearchTextField extends StatelessWidget {
         focusedBorder: buildInputBorder(),
         hintText: 'Search',
         hintStyle: Styles.textStyle16.copyWith(color: Colors.white),
-        suffixIcon: IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            FontAwesomeIcons.magnifyingGlass,
-            color: Colors.white,
-            size: 20.0,
-          ),
+        suffixIcon: const Icon(
+          FontAwesomeIcons.magnifyingGlass,
+          color: Colors.white,
+          size: 20.0,
         ),
       ),
+      onSubmitted: (value) {
+        final query = value.trim();
+        if (query.isNotEmpty) {
+          BlocProvider.of<SearchBooksCubit>(context).fetchBooksByQuery(query);
+        }
+      },
     );
   }
 

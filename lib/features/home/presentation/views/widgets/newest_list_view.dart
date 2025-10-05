@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:bookly_app/features/home/presentation/cubits/newest_books_cubit/newest_books_cubit.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/newest_list_view_item.dart';
-import 'package:bookly_app/core/widgets/custom_loading_indicator.dart';
+import 'package:bookly_app/core/widgets/skeletons/book_list_view_item_skeleton.dart';
+import 'package:bookly_app/core/widgets/book_list_view_item.dart';
 import 'package:bookly_app/core/widgets/error_banner.dart';
 
 class NewestListView extends StatelessWidget {
@@ -19,7 +19,7 @@ class NewestListView extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 30.0),
             sliver: SliverList(
               delegate: SliverChildBuilderDelegate((context, index) {
-                return NewestListViewItem(book: state.books[index]);
+                return BookListViewItem(book: state.books[index]);
               }, childCount: state.books.length),
             ),
           );
@@ -28,7 +28,17 @@ class NewestListView extends StatelessWidget {
             child: ErrorBanner(errorMessage: state.errorMessage),
           );
         } else {
-          return const SliverToBoxAdapter(child: CustomLoadingIndicator());
+          return SliverToBoxAdapter(
+            child: ListView.builder(
+              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+              physics: const BouncingScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: 5,
+              itemBuilder: (context, index) {
+                return const BookListViewItemSkeleton();
+              },
+            ),
+          );
         }
       },
     );

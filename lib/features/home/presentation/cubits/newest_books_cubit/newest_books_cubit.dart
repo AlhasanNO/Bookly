@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
-import 'package:bookly_app/core/models/book/book.dart';
 import 'package:bookly_app/features/home/data/repos/home_repo.dart';
+import 'package:bookly_app/core/models/book/book.dart';
 
 part 'newest_books_states.dart';
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:bookly_app/core/models/book/book.dart';
 import 'package:bookly_app/core/widgets/custom_button.dart';
 import 'package:bookly_app/core/functions/launch_url.dart';
+import 'package:bookly_app/core/models/book/book.dart';
 import 'package:bookly_app/constants.dart';
 
 class BookActions extends StatelessWidget {
@@ -18,33 +18,30 @@ class BookActions extends StatelessWidget {
         children: [
           Expanded(
             child: CustomButton(
-              onPressed: book.saleInfo!.saleability! == 'NOT_FOR_SALE'
-                  ? null
-                  : () async {
-                      await launchCustomUrl(
-                        context,
-                        book.volumeInfo!.infoLink!,
-                      );
-                    },
+              onPressed: book.saleInfo?.saleability == "FREE"
+                  ? () async {
+                      await launchCustomUrl(context, book.volumeInfo?.infoLink);
+                    }
+                  : null,
               backgroundColor: Colors.white,
               foregroundColor: kPrimaryColor,
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(16.0),
                 bottomLeft: Radius.circular(16.0),
               ),
-              text: book.saleInfo!.saleability! == 'NOT_FOR_SALE'
-                  ? 'Not for sale'
-                  : book.saleInfo!.saleability!,
+              text: book.saleInfo?.saleability == 'FREE'
+                  ? 'Free'
+                  : 'Not for sale',
             ),
           ),
           Expanded(
             child: CustomButton(
-              onPressed: book.volumeInfo!.previewLink == null
+              onPressed: book.volumeInfo?.previewLink == null
                   ? null
                   : () async {
                       await launchCustomUrl(
                         context,
-                        book.volumeInfo!.previewLink!,
+                        book.volumeInfo?.previewLink,
                       );
                     },
               backgroundColor: const Color(0xffEF8262),
@@ -53,7 +50,7 @@ class BookActions extends StatelessWidget {
                 topRight: Radius.circular(16.0),
                 bottomRight: Radius.circular(16.0),
               ),
-              text: book.volumeInfo!.previewLink == null
+              text: book.volumeInfo?.previewLink == null
                   ? 'Not avaliable'
                   : 'Preview',
             ),

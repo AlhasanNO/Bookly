@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:bookly_app/features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_actions.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_rating.dart';
+import 'package:bookly_app/core/widgets/custom_book_image.dart';
 import 'package:bookly_app/core/models/book/book.dart';
 import 'package:bookly_app/core/utils/styles.dart';
 
@@ -23,13 +23,13 @@ class BookDetailsSection extends StatelessWidget {
         ),
         const SizedBox(height: 43.0),
         Text(
-          book.volumeInfo!.title!,
+          book.volumeInfo?.title ?? 'No Title!',
           style: Styles.textStyle30,
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 6.0),
         Text(
-          book.volumeInfo!.authors![0],
+          book.volumeInfo?.authors?[0] ?? 'Unknown Author!',
           style: Styles.textStyle18.copyWith(
             fontStyle: FontStyle.italic,
             color: Colors.white.withAlpha(178),

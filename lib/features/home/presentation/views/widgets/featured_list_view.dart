@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:bookly_app/features/home/presentation/cubits/featured_books_cubit/featured_books_cubit.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/custom_book_image.dart';
-import 'package:bookly_app/core/widgets/custom_loading_indicator.dart';
+import 'package:bookly_app/core/widgets/skeletons/custom_book_image_skeleton.dart';
+import 'package:bookly_app/core/widgets/custom_book_image.dart';
 import 'package:bookly_app/core/widgets/error_banner.dart';
 
 class FeaturedListView extends StatelessWidget {
@@ -29,7 +29,18 @@ class FeaturedListView extends StatelessWidget {
         } else if (state is FeaturedBooksFailure) {
           return ErrorBanner(errorMessage: state.errorMessage);
         } else {
-          return const CustomLoadingIndicator();
+          return SizedBox(
+            height: MediaQuery.of(context).size.height * 0.27,
+            child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
+              scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              itemCount: 5,
+              itemBuilder: (context, index) {
+                return const CustomBookImageSkeleton();
+              },
+            ),
+          );
         }
       },
     );
