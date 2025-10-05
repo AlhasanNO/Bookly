@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_book_details_app_bar.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/similar_books_section.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_details_section.dart';
-import 'package:bookly_app/features/home/data/models/book/book.dart';
+import 'package:bookly_app/core/models/book/book.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
   const BookDetailsViewBody({super.key, required this.book});

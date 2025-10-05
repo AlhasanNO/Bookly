@@ -5,14 +5,14 @@ import 'package:bookly_app/core/utils/styles.dart';
 class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
-    required this.onPressed,
+    this.onPressed,
     required this.backgroundColor,
     required this.foregroundColor,
     this.borderRadius,
     required this.text,
   });
 
-  final void Function() onPressed;
+  final void Function()? onPressed;
   final Color backgroundColor;
   final Color foregroundColor;
   final BorderRadius? borderRadius;
