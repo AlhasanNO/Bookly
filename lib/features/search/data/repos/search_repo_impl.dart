@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 
 import 'package:bookly_app/features/search/data/repos/search_repo.dart';
 import 'package:bookly_app/core/utils/api_service.dart';
 import 'package:bookly_app/core/models/book/book.dart';
 import 'package:bookly_app/core/errors/failures.dart';
-import 'package:dio/dio.dart';
 
 class SearchRepoImpl implements SearchRepo {
   SearchRepoImpl(this._apiService);
@@ -15,7 +15,7 @@ class SearchRepoImpl implements SearchRepo {
   Future<Either<Failure, List<Book>>> fetchBooksByQuery(String query) async {
     try {
       final data = await _apiService.get(
-        endPoint: 'volumes?q=$query&filtering=free-ebooks',
+        endPoint: 'volumes?q=subject:$query&filtering=free-ebooks',
       );
 
       final List<Book> books = [];
